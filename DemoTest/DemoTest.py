@@ -274,6 +274,6 @@ class TestSuite1(unittest.TestCase):
 suite = unittest.TestLoader().loadTestsFromTestCase(TestSuite1)
 unittest.TextTestRunner(verbosity=2).run(suite)
              
-# if __name__ == "__main__":
-#     unittest.main()
+if __name__ == "__main__":
+    unittest.main()
 
