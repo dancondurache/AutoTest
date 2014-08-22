@@ -84,131 +84,131 @@ class TestSuite1(unittest.TestCase):
                     contor = contor + increment
             print "3. The email element was not found"
     
-    def test_try_memeo(self):
-        """ Checks if the <Try Memeo C1> popup is displayed"""
-        print
-        print 'Starting Test1: Is the Try Memeo C1 popup displayed?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        popup = driver.find_element_by_id('e2e-dashboard')
-        self.assertTrue(popup.is_displayed(), '"Try Memeo C1" popup is not displayed')
-     
-    def test_try_it(self):
-        """ Checks if the <Try Memeo C1> popup disappears when pressing the Try it button"""
-        print
-        print 'Starting Test2: Does the popup disappear after after clicking the Try it button?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
-        popup = driver.find_element_by_id('e2e-dashboard')
-        self.assertFalse(popup.is_displayed(), 'The popup is no longer displayed')
- 
-           
-    def test_learn_more(self):
-        """ Checks if the The <Learn More> button is displayed"""
-        print
-        print 'Starting Test3: Is the Learn More button displayed?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_id('e2e-dashboard').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-        driver.find_element_by_id('menu-users').send_keys(Keys.RETURN)
-        """ Sends click on the <USERS> tab link"""
-        self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span')
-        driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span').click()
-        """ Sends click on dropdown menu for the first user in the list"""
-        self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a')
-        driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a').send_keys(Keys.RETURN)
-        """ Sends click on the delete option in the dropdown menu"""
-        self.wait_for_element(elem_id = 'deleteButton')
-        learn_more = driver.find_element_by_id('deleteButton')
-        self.assertTrue(learn_more.is_displayed(), 'The <Learn More> button is NOT displayed')
- 
-         
-    def test_sign_up(self):
-        """ Clicks on the <Sign Up> button and checks if the <Company> text field is displayed """           
-        print
-        print 'Starting Test4: After clicking the Sign Up button am I redirected?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_id('e2e-dashboard').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-        driver.find_element_by_id('demo_signup').send_keys(Keys.RETURN)
-        self.wait_for_element(elem_name = 'company_name')
-        company = driver.find_element_by_name('company_name')
-        self.assertTrue((company.is_displayed), 'The <Company> text field is not displayed')
-          
-          
-    def test_footer(self):
-        """ Checks if the webpage footer is displayed"""
-        print
-        print 'Starting Test5: Is the website footer displayed?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard"]/div[2]/div[2]/button')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-        self.wait_for_element(elem_id = 'footer')
-        footer = driver.find_element_by_id('footer')
-        self.assertTrue(footer.is_displayed(), 'The webpage footer is not displayed')
-         
-             
- 
-  
-    def test_button_color(self):
-        """ Checks the color of the <Learn More> button"""
-        print
-        print 'Starting Test6: Is the color of the Learn More button red?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_id('e2e-dashboard').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-        self.wait_for_element(elem_id = 'menu-sharing')
-        driver.find_element_by_id('menu-sharing').send_keys(Keys.RETURN)
-        """ Clicks the Sharing tab link"""
-        self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
-        driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').send_keys(Keys.RETURN)
-        """ Finds the first shared folder and clicks on it """
-        self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[4]')
-        driver.find_element_by_xpath('//*[@id="box-actions"]/button[4]').send_keys(Keys.RETURN)
-        """ Finds the <Delete> button and clicks on it """
-        self.wait_for_element(elem_id = 'deleteButton')
-        button_color = driver.find_element_by_id('deleteButton').value_of_css_property('background-color')
-        self.assertTrue(button_color == 'rgba(189, 38, 47, 1)', 'The color of the button is not the right one')
-        print button_color
-         
-    def test_manage_dialog(self):
-        """ Checks if the <Managing Employee..> dialog is displayed"""
-        print
-        print 'Starting Test7: Is the <Managing Employee..> dialog displayed?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-        self.wait_for_element(elem_id = 'menu-sharing')
-        driver.find_element_by_id('menu-sharing').send_keys(Keys.RETURN)
-        """ Clicks the Sharing tab link"""
-        self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
-        driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').send_keys(Keys.RETURN)
-        """ Finds the first shared folder and clicks on it """
-        self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[3]')
-        driver.find_element_by_xpath('//*[@id="box-actions"]/button[3]').send_keys(Keys.RETURN)
-        """ Finds the <Rename> button and clicks on it """
-          
-        time.sleep(2)
-        learn_more = driver.find_element_by_xpath('//*[@id="e2e-shared_folder_rename"]/div[2]/div[2]/div/button[2]')
-        learn_more.click()
-        """ Finds the <Learn More> button and clicks on it"""
-           
-        self.wait_for_element(elem_xpath = '//*[@id="e2e-devices"]/div[2]/div[2]/button[1]')
-        manage_dialog = driver.find_element_by_id('e2e-devices')
-        self.assertTrue(manage_dialog.is_displayed(), 'The <Manage Employee> dialog is NOT displayed')
+#     def test_try_memeo(self):
+#         """ Checks if the <Try Memeo C1> popup is displayed"""
+#         print
+#         print 'Starting Test1: Is the Try Memeo C1 popup displayed?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         popup = driver.find_element_by_id('e2e-dashboard')
+#         self.assertTrue(popup.is_displayed(), '"Try Memeo C1" popup is not displayed')
+#      
+#     def test_try_it(self):
+#         """ Checks if the <Try Memeo C1> popup disappears when pressing the Try it button"""
+#         print
+#         print 'Starting Test2: Does the popup disappear after after clicking the Try it button?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
+#         popup = driver.find_element_by_id('e2e-dashboard')
+#         self.assertFalse(popup.is_displayed(), 'The popup is no longer displayed')
+#  
+#            
+#     def test_learn_more(self):
+#         """ Checks if the The <Learn More> button is displayed"""
+#         print
+#         print 'Starting Test3: Is the Learn More button displayed?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_id('e2e-dashboard').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#         driver.find_element_by_id('menu-users').send_keys(Keys.RETURN)
+#         """ Sends click on the <USERS> tab link"""
+#         self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span')
+#         driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span').click()
+#         """ Sends click on dropdown menu for the first user in the list"""
+#         self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a')
+#         driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a').send_keys(Keys.RETURN)
+#         """ Sends click on the delete option in the dropdown menu"""
+#         self.wait_for_element(elem_id = 'deleteButton')
+#         learn_more = driver.find_element_by_id('deleteButton')
+#         self.assertTrue(learn_more.is_displayed(), 'The <Learn More> button is NOT displayed')
+#  
+#          
+#     def test_sign_up(self):
+#         """ Clicks on the <Sign Up> button and checks if the <Company> text field is displayed """           
+#         print
+#         print 'Starting Test4: After clicking the Sign Up button am I redirected?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_id('e2e-dashboard').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#         driver.find_element_by_id('demo_signup').send_keys(Keys.RETURN)
+#         self.wait_for_element(elem_name = 'company_name')
+#         company = driver.find_element_by_name('company_name')
+#         self.assertTrue((company.is_displayed), 'The <Company> text field is not displayed')
+#           
+#           
+#     def test_footer(self):
+#         """ Checks if the webpage footer is displayed"""
+#         print
+#         print 'Starting Test5: Is the website footer displayed?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard"]/div[2]/div[2]/button')
+#         driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#         self.wait_for_element(elem_id = 'footer')
+#         footer = driver.find_element_by_id('footer')
+#         self.assertTrue(footer.is_displayed(), 'The webpage footer is not displayed')
+#          
+#              
+#  
+#   
+#     def test_button_color(self):
+#         """ Checks the color of the <Learn More> button"""
+#         print
+#         print 'Starting Test6: Is the color of the Learn More button red?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_id('e2e-dashboard').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#         self.wait_for_element(elem_id = 'menu-sharing')
+#         driver.find_element_by_id('menu-sharing').send_keys(Keys.RETURN)
+#         """ Clicks the Sharing tab link"""
+#         self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
+#         driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').send_keys(Keys.RETURN)
+#         """ Finds the first shared folder and clicks on it """
+#         self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[4]')
+#         driver.find_element_by_xpath('//*[@id="box-actions"]/button[4]').send_keys(Keys.RETURN)
+#         """ Finds the <Delete> button and clicks on it """
+#         self.wait_for_element(elem_id = 'deleteButton')
+#         button_color = driver.find_element_by_id('deleteButton').value_of_css_property('background-color')
+#         self.assertTrue(button_color == 'rgba(189, 38, 47, 1)', 'The color of the button is not the right one')
+#         print button_color
+#          
+#     def test_manage_dialog(self):
+#         """ Checks if the <Managing Employee..> dialog is displayed"""
+#         print
+#         print 'Starting Test7: Is the <Managing Employee..> dialog displayed?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#         self.wait_for_element(elem_id = 'menu-sharing')
+#         driver.find_element_by_id('menu-sharing').send_keys(Keys.RETURN)
+#         """ Clicks the Sharing tab link"""
+#         self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
+#         driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').send_keys(Keys.RETURN)
+#         """ Finds the first shared folder and clicks on it """
+#         self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[3]')
+#         driver.find_element_by_xpath('//*[@id="box-actions"]/button[3]').send_keys(Keys.RETURN)
+#         """ Finds the <Rename> button and clicks on it """
+#           
+#         time.sleep(2)
+#         learn_more = driver.find_element_by_xpath('//*[@id="e2e-shared_folder_rename"]/div[2]/div[2]/div/button[2]')
+#         learn_more.click()
+#         """ Finds the <Learn More> button and clicks on it"""
+#            
+#         self.wait_for_element(elem_xpath = '//*[@id="e2e-devices"]/div[2]/div[2]/button[1]')
+#         manage_dialog = driver.find_element_by_id('e2e-devices')
+#         self.assertTrue(manage_dialog.is_displayed(), 'The <Manage Employee> dialog is NOT displayed')
          
     def test_android_phones(self):
         print
@@ -223,50 +223,50 @@ class TestSuite1(unittest.TestCase):
         driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
         """ Clicks on <Android Phones> link """
         self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
-        android_phones = driver.find_element_by_xpath('//*[@id="types_filter"]/button')
-        self.assertTrue(android_phones.is_displayed(), 'The <Android Phones> dropdown menu is NOT displayed')
+        android_phones = driver.find_element_by_css_selector('#types_filter > button', title == 'Android Phones')
+        self.assertTrue(android_phones == 'Android Phones', 'The <Android Phones> dropdown menu is NOT displayed')
          
          
-    def test_iphones(self):
-        """ Checks if the iPhone links are displayed """
-        print
-        print 'Starting Test9: Are the <iPhone links> displayed?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-          
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
-        self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
-        driver.find_element_by_xpath('//*[@id="types_filter"]/button').click()
-        driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[3]/a/span[2]').click()
-        driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[5]/a/span[2]').click()
-        driver.find_element_by_id('content').click()
-        self.wait_for_element(elem_xpath = '//*[@id="devices"]/tbody/tr[1]/td[2]/div/div[2]/span[1]/a')
-        iphone = driver.find_element_by_partial_link_text('s iPhone ')
-        self.assertTrue(iphone.is_displayed(), 'The <iPhone> links are NOT displayed')
-          
-    def test_map(self):
-        """ Checks if the Map is displayed """
-        print
-        print 'Starting Test10: Is the map displayed?'
-        driver = self.driver
-        driver.get('https://c1.memeo.com/demo')
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
-        """ Sends click on the <Try it> button"""
-         
-        driver.find_element_by_id('menu-activity').click()
-        self.wait_for_element(elem_xpath = '//*[@id="custom-reports"]/ul/li[6]/a')
-        driver.find_element_by_xpath('//*[@id="custom-reports"]/ul/li[6]/a').click()
-         
-        self.wait_for_element(elem_id = 'activityMap_button')
-        driver.find_element_by_id('activityMap_button').click()
-         
-        time.sleep(3)
-        map = driver.find_element_by_id('e2e-map_list')
-        self.assertTrue(map.is_displayed(), 'The map is NOTd displayed')
+#     def test_iphones(self):
+#         """ Checks if the iPhone links are displayed """
+#         print
+#         print 'Starting Test9: Are the <iPhone links> displayed?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#           
+#         driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
+#         self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
+#         driver.find_element_by_xpath('//*[@id="types_filter"]/button').click()
+#         driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[3]/a/span[2]').click()
+#         driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[5]/a/span[2]').click()
+#         driver.find_element_by_id('content').click()
+#         self.wait_for_element(elem_xpath = '//*[@id="devices"]/tbody/tr[1]/td[2]/div/div[2]/span[1]/a')
+#         iphone = driver.find_element_by_partial_link_text('s iPhone ')
+#         self.assertTrue(iphone.is_displayed(), 'The <iPhone> links are NOT displayed')
+#           
+#     def test_map(self):
+#         """ Checks if the Map is displayed """
+#         print
+#         print 'Starting Test10: Is the map displayed?'
+#         driver = self.driver
+#         driver.get('https://c1.memeo.com/demo')
+#         self.wait_for_element(elem_id = 'e2e-dashboard')
+#         driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').send_keys(Keys.RETURN)
+#         """ Sends click on the <Try it> button"""
+#          
+#         driver.find_element_by_id('menu-activity').click()
+#         self.wait_for_element(elem_xpath = '//*[@id="custom-reports"]/ul/li[6]/a')
+#         driver.find_element_by_xpath('//*[@id="custom-reports"]/ul/li[6]/a').click()
+#          
+#         self.wait_for_element(elem_id = 'activityMap_button')
+#         driver.find_element_by_id('activityMap_button').click()
+#          
+#         time.sleep(3)
+#         map = driver.find_element_by_id('e2e-map_list')
+#         self.assertTrue(map.is_displayed(), 'The map is NOTd displayed')
         
     def tearDown(self):
         self.driver.quit()
