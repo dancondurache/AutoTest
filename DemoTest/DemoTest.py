@@ -1,14 +1,3 @@
-'''
-Created on Aug 22, 2014
-
-@author: dan.condurache
-'''
-
-'''
-Created on Aug 13, 2014
-
-@author: dan.condurache
-'''
 """ These are the 10 tests:
 
 1. Check for the <Try Memeo C1> popup to be visible
