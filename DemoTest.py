@@ -265,9 +265,9 @@ class TestSuite1(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-suite = unittest.TestLoader().loadTestsFromTestCase(TestSuite1)
-unittest.TextTestRunner(verbosity=2).run(suite)
+# suite = unittest.TestLoader().loadTestsFromTestCase(TestSuite1)
+# unittest.TextTestRunner(verbosity=2).run(suite)
              
-# if __name__ == "__main__":
-#     unittest.main()
+if __name__ == "__main__":
+    unittest.main()
 
