@@ -27,21 +27,16 @@ from BaseTest import BaseTest
 
 class TestSuite1(BaseTest):
     
-#     from custom_is_visible import custom_is_visible
-#     from wait_for_element import wait_for_element
-#     from open_test_website import open_test_website
-#     from check_footer import check_footer
-    
     def setUp(self):
         self.driver = webdriver.Firefox()
                         
-#     def test_01_try_memeo_modal_is_displayed(self):
-# #         Checks if the <Try Memeo C1> popup is displayed
-# #         print
-# #         print 'Starting Test1: Is the Try Memeo C1 popup displayed?'
-#         self.BaseTest().open_test_website()
-#         self.BaseTest().wait_for_element(elem_id = 'e2e-dashboard')
-#         self.BaseTest().custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[5]')  
+    def test_01_try_memeo_modal_is_displayed(self):
+#         Checks if the <Try Memeo C1> popup is displayed
+#         print
+#         print 'Starting Test1: Is the Try Memeo C1 popup displayed?'
+        self.open_test_website()
+        self.wait_for_element(elem_id = 'e2e-dashboard')
+        self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[5]')  
            
     def test_02_try_memeo_modal_closes_on_try_it_click(self):
 #         Checks if the TryMemeoC1 popup disappears when pressing the TryIt button
@@ -225,34 +220,14 @@ class TestSuite1(BaseTest):
 def suite135(self):
 #     Runs tests 1,3,5  from TestSuite1
     suite135 = unittest.TestSuite()
-    suite135.addTest(TestSuite1('test_02_try_memeo_modal_closes_on_try_it_click'))
-#     suite135.addTest(TestSuite1('test_03_learn_more_is_displayed_in_delete_user_modal'))
-#     suite135.addTest(TestSuite1('test_05_website_footer_is_displayed'))
+    suite135.addTest(TestSuite1('test_01_try_memeo_modal_is_displayed'))
+    suite135.addTest(TestSuite1('test_03_learn_more_is_displayed_in_delete_user_modal'))
+    suite135.addTest(TestSuite1('test_05_website_footer_is_displayed'))
     return suite135
 
-
 unittest.TextTestRunner(verbosity=2).run(suite135(2))
-# unittest.TextTestRunner().run(suite135)
-
-#         suite135.addTest(TestSuite1('test_01_try_memeo_modal_is_displayed'))
-#  
-#         suite135.addTest(TestSuite1('test_03_learn_more_is_displayed_in_delete_user_modal'))
-#          
-#         suite135.addTest(TestSuite1('test_05_website_footer_is_displayed'))
-    
-    
-
-  
-#         unittest.TextTestRunner().run(suite135)
-    
-    
-
-    
-# suite = unittest.TestLoader().loadTestsFromTestCase(TestSuite1)
-# unittest.TextTestRunner(verbosity=2).run(suite)
-# ^ Runs tests from a certain TestSuite
              
-# if __name__ == "__main__":
-#     unittest.main()
+if __name__ == "__main__":
+    unittest.main()
 
 
