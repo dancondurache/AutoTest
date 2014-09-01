@@ -29,6 +29,8 @@ class TestSuite1(BaseTest):
     
     def setUp(self):
         self.driver = webdriver.Firefox()
+#         self.driver = webdriver.PhantomJS()
+        
                         
     def test_01_try_memeo_modal_is_displayed(self):
 #         Checks if the <Try Memeo C1> popup is displayed
@@ -211,23 +213,23 @@ class TestSuite1(BaseTest):
     def tearDown(self):
         self.driver.quit()
         
-# def suite_1_10(self):
-# #     Runs all the tests from the TestSuite1 class
-#     suite1_10 = unittest.TestSuite()
-#     suite1_10.addTest(unittest.makeSuite(TestSuite1))
-#     return suite1_10
+def suite110(self):
+#     Runs all the tests from the TestSuite1 class
+    suite110 = unittest.TestSuite()
+    suite110.addTest(unittest.makeSuite(TestSuite1))
+    return suite110
 
-def suite135(self):
-#     Runs tests 1,3,5  from TestSuite1
-    suite135 = unittest.TestSuite()
-    suite135.addTest(TestSuite1('test_01_try_memeo_modal_is_displayed'))
-    suite135.addTest(TestSuite1('test_03_learn_more_is_displayed_in_delete_user_modal'))
-    suite135.addTest(TestSuite1('test_05_website_footer_is_displayed'))
-    return suite135
-
-unittest.TextTestRunner(verbosity=2).run(suite135(2))
+# def suite135(self):
+# #     Runs tests 1,3,5  from TestSuite1
+#     suite135 = unittest.TestSuite()
+#     suite135.addTest(TestSuite1('test_01_try_memeo_modal_is_displayed'))
+#     suite135.addTest(TestSuite1('test_03_learn_more_is_displayed_in_delete_user_modal'))
+#     suite135.addTest(TestSuite1('test_05_website_footer_is_displayed'))
+#     return suite135
+# 
+unittest.TextTestRunner(verbosity=2).run(suite110(2))
              
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
