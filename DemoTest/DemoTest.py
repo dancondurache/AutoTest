@@ -26,198 +26,198 @@ from BaseTest import BaseTest
 
 
 class TestSuite1(BaseTest):
-    
-    def setUp(self):
-        self.driver = webdriver.Firefox()
+	
+	def setUp(self):
+		self.driver = webdriver.Firefox()
 #         self.driver = webdriver.PhantomJS()
-        
-                        
-    def test_01_try_memeo_modal_is_displayed(self):
+		
+						
+	def test_01_try_memeo_modal_is_displayed(self):
 #         Checks if the <Try Memeo C1> popup is displayed
 #         print
 #         print 'Starting Test1: Is the Try Memeo C1 popup displayed?'
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[5]')  
-           
-    def test_02_try_memeo_modal_closes_on_try_it_click(self):
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[5]')  
+		   
+	def test_02_try_memeo_modal_closes_on_try_it_click(self):
 #         Checks if the TryMemeoC1 popup disappears when pressing the TryIt button
 #         print
 #         print 'Starting Test2: Does the popup disappear after after clicking the Try it button?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
-        popup = driver.find_element_by_id('e2e-dashboard')
-        self.assertFalse(popup.is_displayed(), 'The TryMemeoC1 modal is no longer displayed')
-        
-                  
-    def test_03_learn_more_is_displayed_in_delete_user_modal(self):
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
+		popup = driver.find_element_by_id('e2e-dashboard')
+		self.assertFalse(popup.is_displayed(), 'The TryMemeoC1 modal is no longer displayed')
+		
+				  
+	def test_03_learn_more_is_displayed_in_delete_user_modal(self):
 #          Checks if the LearnMore button is displayed
 #         print
 #         print 'Starting Test3: Is the Learn More button displayed?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_id('e2e-dashboard').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_id('e2e-dashboard').click()
 #         Clicks on the TryIt button
-        driver.find_element_by_id('menu-users').click()
+		driver.find_element_by_id('menu-users').click()
 #         Clicks on the USERS link
-        self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span')
-        driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span').click()
+		self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span')
+		driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/a/span').click()
 #         Clicks the dropdown menu for the first user in the list
-        self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a')
-        driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a').click()
+		self.wait_for_element(elem_xpath = '//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a')
+		driver.find_element_by_xpath('//*[@id="userTable"]/tbody/tr[1]/td[1]/div/div/ul/li[2]/a').click()
 #         Clicks on the delete option in the dropdown menu
-        self.wait_for_element(elem_id = 'deleteButton')
-        learn_more = driver.find_element_by_id('deleteButton')
-        self.assertTrue(learn_more.is_displayed(), 'The LearnMore button from the DeleteUser modal IS NOT displayed')
-        
-                
-    def test_04_signup_redirects_to_register_url(self):
+		self.wait_for_element(elem_id = 'deleteButton')
+		learn_more = driver.find_element_by_id('deleteButton')
+		self.assertTrue(learn_more.is_displayed(), 'The LearnMore button from the DeleteUser modal IS NOT displayed')
+		
+				
+	def test_04_signup_redirects_to_register_url(self):
 #         Checks if the SignUp button redirects to RegisterUrl https://c1.memeo.com/app_js/register          
 #         print
 #         print 'Starting Test4: After clicking the Sign Up button am I redirected?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_id('e2e-dashboard').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_id('e2e-dashboard').click()
 #         Clicks on the TryIt button
-        driver.find_element_by_id('demo_signup').click()
-        self.wait_for_element(elem_name = 'company_name')
-        register_url = self.driver.current_url 
+		driver.find_element_by_id('demo_signup').click()
+		self.wait_for_element(elem_name = 'company_name')
+		register_url = self.driver.current_url 
 #         print register_url
-        self.assertEqual(register_url, 'https://c1.memeo.com/app_js/register', 'The SignUp button DOES NOT redirect to the RegisterUrl https://c1.memeo.com/app_js/register')
-                 
-                 
-    def test_05_website_footer_is_displayed(self):
+		self.assertEqual(register_url, 'https://c1.memeo.com/app_js/register', 'The SignUp button DOES NOT redirect to the RegisterUrl https://c1.memeo.com/app_js/register')
+				 
+				 
+	def test_05_website_footer_is_displayed(self):
 #         Checks if the webpage footer is displayed
 #         print
 #         print 'Starting Test5: Is the website footer displayed?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard"]/div[2]/div[2]/button')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard"]/div[2]/div[2]/button')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
 #         Clicks on the TryIt button
-        self.wait_for_element(elem_xpath = '//*[@id="footer"]')
-        self.check_footer()
+		self.wait_for_element(elem_xpath = '//*[@id="footer"]')
+		self.check_footer()
  
  
-    def test_06_learn_more_is_red_in_delete_folder_modal(self):
+	def test_06_learn_more_is_red_in_delete_folder_modal(self):
 #         Checks the color of the LearnMore button
 #         print
 #         print 'Starting Test6: Is the color of the Learn More button red?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_id('e2e-dashboard').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_id('e2e-dashboard').click()
 #         Clicks on the TryIt button
-        self.wait_for_element(elem_id = 'menu-sharing')
-        driver.find_element_by_id('menu-sharing').click()
+		self.wait_for_element(elem_id = 'menu-sharing')
+		driver.find_element_by_id('menu-sharing').click()
 #         Clicks the Sharing tab link
-        self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
-        driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').click()
-        """ Finds the first shared folder and clicks on it """
-        self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[4]')
-        driver.find_element_by_xpath('//*[@id="box-actions"]/button[4]').click()
+		self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
+		driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').click()
+		""" Finds the first shared folder and clicks on it """
+		self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[4]')
+		driver.find_element_by_xpath('//*[@id="box-actions"]/button[4]').click()
 #         Clicks the Delete button 
-        self.wait_for_element(elem_id = 'deleteButton')
-        button_color = driver.find_element_by_id('deleteButton').value_of_css_property('background-color')
-        self.assertTrue(button_color == 'rgba(189, 38, 47, 1)', 'The color of the LearnMore button from DeleteSharedFolder modal IS NOT red')
+		self.wait_for_element(elem_id = 'deleteButton')
+		button_color = driver.find_element_by_id('deleteButton').value_of_css_property('background-color')
+		self.assertTrue(button_color == 'rgba(189, 38, 47, 1)', 'The color of the LearnMore button from DeleteSharedFolder modal IS NOT red')
 #         print button_color
-         
-                
-    def test_07_manage_employee_is_displayed_in_rename_folder_modal(self):
+		 
+				
+	def test_07_manage_employee_is_displayed_in_rename_folder_modal(self):
 #         Checks if the ManagingEmployee dialog is displayed
 #         print
 #         print 'Starting Test7: Is the <Managing Employee..> dialog displayed?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
 #         Clicks on the TryIt button
-        self.wait_for_element(elem_id = 'menu-sharing')
-        driver.find_element_by_id('menu-sharing').click()
+		self.wait_for_element(elem_id = 'menu-sharing')
+		driver.find_element_by_id('menu-sharing').click()
 #         Clicks the Sharing tab link
-        self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
-        driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').click()
+		self.wait_for_element(elem_xpath = '//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a')
+		driver.find_element_by_xpath('//*[@id="internalSharesTable"]/tbody/tr[1]/td[1]/a').click()
 #         Clicks the first SharedFolder
-        self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[3]')
-        driver.find_element_by_xpath('//*[@id="box-actions"]/button[3]').click()
+		self.wait_for_element(elem_xpath = '//*[@id="box-actions"]/button[3]')
+		driver.find_element_by_xpath('//*[@id="box-actions"]/button[3]').click()
 #         Clicks the Rename button
-        time.sleep(2)
-        learn_more = driver.find_element_by_xpath('//*[@id="e2e-shared_folder_rename"]/div[2]/div[2]/div/button[2]')
-        learn_more.click()
+		time.sleep(2)
+		learn_more = driver.find_element_by_xpath('//*[@id="e2e-shared_folder_rename"]/div[2]/div[2]/div/button[2]')
+		learn_more.click()
 #         Clicks the LearnMore button
-        self.wait_for_element(elem_xpath = '//*[@id="e2e-devices"]/div[2]/div[2]/button[1]')
-        manage_dialog = driver.find_element_by_id('e2e-devices')
-        self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[6]')
-         
-                
-    def test_08_android_phones_is_displayed_in_dropdown_menu(self):
+		self.wait_for_element(elem_xpath = '//*[@id="e2e-devices"]/div[2]/div[2]/button[1]')
+		manage_dialog = driver.find_element_by_id('e2e-devices')
+		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[6]')
+		 
+				
+	def test_08_android_phones_is_displayed_in_dropdown_menu(self):
 #         Checks if Android Phones option is displayed in the dropdown menu
 #         print
 #         print 'Starting Test8: Is the <Android Phones> dropdown menu displayed?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
 #          Clicks the TryIt button
-        self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
+		self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
 #          Clicks AndroidPhones link
-        self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
-        android_phones = driver.find_element_by_xpath('//*[@id="types_filter"]/button')
-        self.assertTrue(android_phones.is_displayed(), 'The AndroidPhones IS NOT displayed in the dropdown menu')
-          
-                 
-    def test_09_iphones_are_displayed_in_devices(self):
+		self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
+		android_phones = driver.find_element_by_xpath('//*[@id="types_filter"]/button')
+		self.assertTrue(android_phones.is_displayed(), 'The AndroidPhones IS NOT displayed in the dropdown menu')
+		  
+				 
+	def test_09_iphones_are_displayed_in_devices(self):
 #          Checks if the iPhone links are displayed
 #         print
 #         print 'Starting Test9: Are the <iPhone links> displayed?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
 #          Clicks the TryIt button
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
-        self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
-        driver.find_element_by_xpath('//*[@id="types_filter"]/button').click()
-        driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[3]/a/span[2]').click()
-        driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[5]/a/span[2]').click()
-        driver.find_element_by_id('content').click()
-        self.wait_for_element(elem_xpath = '//*[@id="devices"]/tbody/tr[1]/td[2]/div/div[2]/span[1]/a')
-        iphone = driver.find_element_by_partial_link_text('s iPhone ')
-        self.assertTrue(iphone.is_displayed(), 'The iPhone/iPod links ARE NOT displayed in iPhone/iPod devices')
-          
-                 
-    def test_10_map_is_displayed_in_invalid_login_activity(self):
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard-devices"]/div/div[5]/div/div[1]/a/span/i[2]').click()
+		self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
+		driver.find_element_by_xpath('//*[@id="types_filter"]/button').click()
+		driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[3]/a/span[2]').click()
+		driver.find_element_by_xpath('//*[@id="types_filter"]/ul/li[5]/a/span[2]').click()
+		driver.find_element_by_id('content').click()
+		self.wait_for_element(elem_xpath = '//*[@id="devices"]/tbody/tr[1]/td[2]/div/div[2]/span[1]/a')
+		iphone = driver.find_element_by_partial_link_text('s iPhone ')
+		self.assertTrue(iphone.is_displayed(), 'The iPhone/iPod links ARE NOT displayed in iPhone/iPod devices')
+		  
+				 
+	def test_10_map_is_displayed_in_invalid_login_activity(self):
 #          Checks if the Map is displayed
 #         print
 #         print 'Starting Test10: Is the map displayed?'
-        driver = self.driver
-        self.open_test_website()
-        self.wait_for_element(elem_id = 'e2e-dashboard')
-        driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
+		driver = self.driver
+		self.open_test_website()
+		self.wait_for_element(elem_id = 'e2e-dashboard')
+		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
 #         Clicks the TryIt button
-        driver.find_element_by_id('menu-activity').click()
-        self.wait_for_element(elem_xpath = '//*[@id="custom-reports"]/ul/li[6]/a')
-        driver.find_element_by_xpath('//*[@id="custom-reports"]/ul/li[6]/a').click()
-        self.wait_for_element(elem_id = 'activityMap_button')
-        driver.find_element_by_id('activityMap_button').click()
-        time.sleep(3)
-        map = driver.find_element_by_id('e2e-map_list')
-        self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[7]')                                        
-        
+		driver.find_element_by_id('menu-activity').click()
+		self.wait_for_element(elem_xpath = '//*[@id="custom-reports"]/ul/li[6]/a')
+		driver.find_element_by_xpath('//*[@id="custom-reports"]/ul/li[6]/a').click()
+		self.wait_for_element(elem_id = 'activityMap_button')
+		driver.find_element_by_id('activityMap_button').click()
+		time.sleep(3)
+		map = driver.find_element_by_id('e2e-map_list')
+		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[7]')                                        
+		
 
-    def tearDown(self):
-        self.driver.quit()
-        
+	def tearDown(self):
+		self.driver.quit()
+		
 def suite110(self):
 #     Runs all the tests from the TestSuite1 class
-    suite110 = unittest.TestSuite()
-    suite110.addTest(unittest.makeSuite(TestSuite1))
-    return suite110
+	suite110 = unittest.TestSuite()
+	suite110.addTest(unittest.makeSuite(TestSuite1))
+	return suite110
 
 # def suite135(self):
 # #     Runs tests 1,3,5  from TestSuite1
@@ -228,7 +228,7 @@ def suite110(self):
 #     return suite135
 # 
 unittest.TextTestRunner(verbosity=2).run(suite110(2))
-             
+			 
 # if __name__ == "__main__":
 #     unittest.main()
 
