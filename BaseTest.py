@@ -3,16 +3,17 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoSuchAttributeException
 import unittest
+import sys
 
 class BaseTest(unittest.TestCase):
 	
 	def open_test_website(self):
-#         Opens the demo page for Memeo C1
-#         driver = webdriver.PhantomJS()
-#         driver.set_window_size(1280, 900)
-		driver = self.driver
-		demo_url = 'https://c1.memeo.com/demo'
-		driver.get(demo_url)
+	   driver = self.driver	
+	   # driver = webdriver.PhantomJS()
+	   # driver.set_window_size(1280, 900)
+	   # driver = self.driver
+	   demo_url = 'https://c1.memeo.com/demo'
+	   driver.get(demo_url)
 	   
 	def check_footer(self):
 		driver = self.driver 
