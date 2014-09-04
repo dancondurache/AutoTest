@@ -17,6 +17,7 @@ click the <Learn More> button, check if the <Managing Employee..> dialog is disp
 9. Click the <Android Phone> link, click the dropdown menu, uncheck <Android Phones> and check <iPhones/iPods>,
 check if iPhones/iPods are displayed
 10. Click the <Activity> link, click <Invalid Logins>, click <Map>, check if the map is displayed
+11. Modified the description for a new commit, a new push on GitHub to see if Jenkins detects it
 """
 import time
 import unittest
