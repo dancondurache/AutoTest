@@ -6,3 +6,10 @@ wait_for_element.py
 custom_is_visible.py 
 suite_one_test.py 
  
+suite_one_test.py
+ghostdriver.log
+DemoTest.pyc
+BaseTest.pyc
+ghostdriver.log
+DemoTest.pyc
+BaseTest.pyc
