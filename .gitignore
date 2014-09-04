@@ -1,7 +1,8 @@
-C:\AutoTest\DemoTest\check_footer.py 
-C:\AutoTest\DemoTest\custom_is_visible.py 
-C:\AutoTest\DemoTest\custom_is_visible.pyc 
-C:\AutoTest\DemoTest\open_test_website.py 
-C:\AutoTest\DemoTest\open_test_website.pyc 
-C:\AutoTest\DemoTest\wait_for_element.pyc 
-C:\AutoTest\DemoTest\wait_for_element.py 
+*.pyc
+ghostdriver.log
+open_test_website.py
+check_footer.py 
+wait_for_element.py
+custom_is_visible.py 
+suite_one_test.py 
+ 
