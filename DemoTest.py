@@ -22,9 +22,6 @@ import time
 import unittest
 from selenium import webdriver
 from BaseTest import BaseTest
-import sys	
-
-
 
 class TestSuite1(BaseTest):
 	
@@ -33,29 +30,22 @@ class TestSuite1(BaseTest):
 		
 						
 	def test_01_try_memeo_modal_is_displayed(self):
-#         Checks if the <Try Memeo C1> popup is displayed
-#         print
-#         print 'Starting Test1: Is the Try Memeo C1 popup displayed?'
+		# Checks if the <Try Memeo C1> popup is displayed
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
-		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[5]')  
-		   
+		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[5]')
+
 	def test_02_try_memeo_modal_closes_on_try_it_click(self):
-#         Checks if the TryMemeoC1 popup disappears when pressing the TryIt button
-#         print
-#         print 'Starting Test2: Does the popup disappear after after clicking the Try it button?'
+		# Checks if the TryMemeoC1 popup disappears when pressing the TryIt button
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
 		driver.find_element_by_xpath('//*[@id="e2e-dashboard"]/div[2]/div[2]/button').click()
 		popup = driver.find_element_by_id('e2e-dashboard')
 		self.assertFalse(popup.is_displayed(), 'The TryMemeoC1 modal is no longer displayed')
-		
-				  
+
 	def test_03_learn_more_is_displayed_in_delete_user_modal(self):
-#          Checks if the LearnMore button is displayed
-#         print
-#         print 'Starting Test3: Is the Learn More button displayed?'
+		# Checks if the LearnMore button is displayed
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -72,12 +62,9 @@ class TestSuite1(BaseTest):
 		self.wait_for_element(elem_id = 'deleteButton')
 		learn_more = driver.find_element_by_id('deleteButton')
 		self.assertTrue(learn_more.is_displayed(), 'The LearnMore button from the DeleteUser modal IS NOT displayed')
-		
-				
+
 	def test_04_signup_redirects_to_register_url(self):
-#         Checks if the SignUp button redirects to RegisterUrl https://c1.memeo.com/app_js/register          
-#         print
-#         print 'Starting Test4: After clicking the Sign Up button am I redirected?'
+		# Checks if the SignUp button redirects to RegisterUrl https://c1.memeo.com/app_js/register
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -85,15 +72,12 @@ class TestSuite1(BaseTest):
 #         Clicks on the TryIt button
 		driver.find_element_by_id('demo_signup').click()
 		self.wait_for_element(elem_name = 'company_name')
-		register_url = self.driver.current_url 
+		register_url = self.driver.current_url
 #         print register_url
 		self.assertEqual(register_url, 'https://c1.memeo.com/app_js/register', 'The SignUp button DOES NOT redirect to the RegisterUrl https://c1.memeo.com/app_js/register')
-				 
-				 
+
 	def test_05_website_footer_is_displayed(self):
-#         Checks if the webpage footer is displayed
-#         print
-#         print 'Starting Test5: Is the website footer displayed?'
+		# Checks if the webpage footer is displayed
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_xpath = '//*[@id="e2e-dashboard"]/div[2]/div[2]/button')
@@ -101,12 +85,9 @@ class TestSuite1(BaseTest):
 #         Clicks on the TryIt button
 		self.wait_for_element(elem_xpath = '//*[@id="footer"]')
 		self.check_footer()
- 
- 
+
 	def test_06_learn_more_is_red_in_delete_folder_modal(self):
-#         Checks the color of the LearnMore button
-#         print
-#         print 'Starting Test6: Is the color of the Learn More button red?'
+		# Checks the color of the LearnMore button
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -125,12 +106,9 @@ class TestSuite1(BaseTest):
 		button_color = driver.find_element_by_id('deleteButton').value_of_css_property('background-color')
 		self.assertTrue(button_color == 'rgba(189, 38, 47, 1)', 'The color of the LearnMore button from DeleteSharedFolder modal IS NOT red')
 #         print button_color
-		 
-				
+
 	def test_07_manage_employee_is_displayed_in_rename_folder_modal(self):
-#         Checks if the ManagingEmployee dialog is displayed
-#         print
-#         print 'Starting Test7: Is the <Managing Employee..> dialog displayed?'
+		# Checks if the Managing Employee dialog is displayed
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -152,12 +130,9 @@ class TestSuite1(BaseTest):
 		self.wait_for_element(elem_xpath = '//*[@id="e2e-devices"]/div[2]/div[2]/button[1]')
 		manage_dialog = driver.find_element_by_id('e2e-devices')
 		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[6]')
-		 
-				
+
 	def test_08_android_phones_is_displayed_in_dropdown_menu(self):
-#         Checks if Android Phones option is displayed in the dropdown menu
-#         print
-#         print 'Starting Test8: Is the <Android Phones> dropdown menu displayed?'
+		# Checks if Android Phones option is displayed in the dropdown menu
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -169,12 +144,9 @@ class TestSuite1(BaseTest):
 		self.wait_for_element(elem_xpath = '//*[@id="types_filter"]/button')
 		android_phones = driver.find_element_by_xpath('//*[@id="types_filter"]/button')
 		self.assertTrue(android_phones.is_displayed(), 'The AndroidPhones IS NOT displayed in the dropdown menu')
-		  
-				 
+
 	def test_09_iphones_are_displayed_in_devices(self):
-#          Checks if the iPhone links are displayed
-#         print
-#         print 'Starting Test9: Are the <iPhone links> displayed?'
+		# Checks if the iPhone links are displayed
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -189,12 +161,9 @@ class TestSuite1(BaseTest):
 		self.wait_for_element(elem_xpath = '//*[@id="devices"]/tbody/tr[1]/td[2]/div/div[2]/span[1]/a')
 		iphone = driver.find_element_by_partial_link_text('s iPhone ')
 		self.assertTrue(iphone.is_displayed(), 'The iPhone/iPod links ARE NOT displayed in iPhone/iPod devices')
-		  
-				 
+
 	def test_10_map_is_displayed_in_invalid_login_activity(self):
-#          Checks if the Map is displayed
-#         print
-#         print 'Starting Test10: Is the map displayed?'
+		# Checks if the Map is displayed
 		driver = self.driver
 		self.open_test_website()
 		self.wait_for_element(elem_id = 'e2e-dashboard')
@@ -207,29 +176,7 @@ class TestSuite1(BaseTest):
 		driver.find_element_by_id('activityMap_button').click()
 		time.sleep(3)
 		map = driver.find_element_by_id('e2e-map_list')
-		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[7]')                                        
-		
+		self.custom_is_visible(elem_xpath = '//*[@id="ng-app"]/body/div[7]')
 
 	def tearDown(self):
 		self.driver.quit()
-		
-# def suite110(self):
-# #     Runs all the tests from the TestSuite1 class
-# 	suite110 = unittest.TestSuite()
-# 	suite110.addTest(unittest.makeSuite(TestSuite1))
-# 	return suite110
-
-# def suite135(self):
-# #     Runs tests 1,3,5  from TestSuite1
-#     suite135 = unittest.TestSuite()
-#     suite135.addTest(TestSuite1('test_01_try_memeo_modal_is_displayed'))
-#     suite135.addTest(TestSuite1('test_03_learn_more_is_displayed_in_delete_user_modal'))
-#     suite135.addTest(TestSuite1('test_05_website_footer_is_displayed'))
-#     return suite135
-# 
-# unittest.TextTestRunner(verbosity=2).run(suite110(2))
-			 
-# if __name__ == "__main__":
-#     unittest.main()
-
-
