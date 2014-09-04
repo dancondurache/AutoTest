@@ -3,27 +3,31 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoSuchAttributeException
 import unittest
-import sys
+
 
 class BaseTest(unittest.TestCase):
-	
+	""" The BaseTest class contains:
+
+		1. open_test_website: opens the Memeo C1 demo website
+		2. check_footer: verifies the footer of the website
+		3. wait_for_element: waits for elements to be loaded before searching for them
+		4. custom_si_visible: checks the visibility of some modals popups 
+	"""
+
 	def open_test_website(self):
-	   driver = self.driver	
-	   # driver = webdriver.PhantomJS()
-	   # driver.set_window_size(1280, 900)
-	   # driver = self.driver
-	   demo_url = 'https://c1.memeo.com/demo'
-	   driver.get(demo_url)
-	   
+		driver = self.driver
+		demo_url = 'https://c1.memeo.com/demo'
+		driver.get(demo_url)
+
 	def check_footer(self):
-		driver = self.driver 
-		try:       
-			self.driver.find_element_by_xpath('//*[@id="footer"]') 
+		driver = self.driver
+		try:
+			self.driver.find_element_by_xpath('//*[@id="footer"]')
 		except:
 			raise (NoSuchElement, 'The Footer Is Not displayed')
 		
 		try:
-			self.driver.find_element_by_xpath('//*[@id="footer"]/div[1]') 
+			self.driver.find_element_by_xpath('//*[@id="footer"]/div[1]')
 		except:
 			raise (NoSuchElement, 'The Version Number Is Not displayed')
 		
@@ -36,39 +40,36 @@ class BaseTest(unittest.TestCase):
 		""" The wait_for_element method waits for an element (identified by name,id or xpath) to be visible
 			to make sure that the webpage has loaded before continuing with the rest of the test. 
 		"""
-		
+
 		contor = 0
 		increment = 0.5
 		max_duration = 10
 		if elem_name == None and elem_xpath == None:
 			while contor < max_duration:
-				try: 
+				try:
 					self.driver.find_element_by_id(elem_id)
-#                         print "The element with the Id '%s' has been found" % elem_id
-					return           
-				except: 
+					return
+				except:
 					time.sleep(increment)
 					contor = contor + increment
 			print "1. The id element was not found"
 		
 		if elem_name == None and elem_id == None:
 			while contor < max_duration:
-				try: 
-					self.driver.find_element_by_xpath(elem_xpath) 
-#                         print "The element with the XPath '%s' has been found" % elem_xpath
+				try:
+					self.driver.find_element_by_xpath(elem_xpath)
 					return
-				except: 
+				except:
 					time.sleep(increment)
 					contor = contor + increment
-			print "2. The xpath element was not found" 
+			print "2. The xpath element was not found"
 			
 		if elem_id == None and elem_xpath == None:
 			while contor < max_duration:
-				try: 
+				try:
 					self.driver.find_element_by_name(elem_name)
-#                         print "The element with the Name '%s' has been found" % elem_name
 					return
-				except: 
+				except:
 					time.sleep(increment)
 					contor = contor + increment
 			print "3. The email element was not found"
@@ -80,40 +81,33 @@ class BaseTest(unittest.TestCase):
 			try:
 				self.driver.find_element_by_xpath(elem_xpath)
 			except:
-				raise (NoSuchElementException, '1. The element with that XPath does not exist')
-				 
-			
+				raise NoSuchElementException('1. The element with the %s XPath does not exist' %elem_xpath)
 			try:
-				self.assertIn('block', self.driver.find_element_by_xpath(elem_xpath).get_attribute('style'),
-							 '1.The popup Is Not visible')
-			except: 
-				raise (NoSuchAttributeException, '2. The element does not have a <Style> Attribute') 
+				self.assertIn('block', self.driver.find_element_by_xpath(elem_xpath).get_attribute('style'), '1.The popup Is Not visible')
+			except:
+				raise NoSuchAttributeException('2. The element does not have a Style Attribute')
 				
 		if elem_name == None and elem_xpath == None:
 			
 			try:
 				self.driver.find_element_by_id(elem_id)
 			except:
-				raise (NoSuchElementException, '1. The element with that Id does not exist')
-			
+				raise NoSuchElementException ('3. The element with the %s Id does not exist' %elem_id)
 			try:
-				self.assertIn('block', self.driver.find_element_by_id(elem_id).get_attribute('style'),
-							 '1.The popup Is Not visible')
-			except: 
-				raise (NoSuchAttributeException, '2. The element does not have a <Style> Attribute') 
+				self.assertIn('block', self.driver.find_element_by_id(elem_id).get_attribute('style'), '1.The popup Is Not visible')
+			except:
+				raise NoSuchAttributeException('4. The element does not have a Style Attribute')
 		
 		if elem_xpath == None and elem_id == None:
 			
 			try:
 				self.driver.find_element_by_name(elem_name)
 			except:
-				raise (NoSuchElementException, '1. The element with that Name does not exist')
-			
+				raise NoSuchElementException('5. The element with the %s Name does not exist' %elem_name)
 			try:
-				self.assertIn('block', self.driver.find_element_by_name(elem_name).get_attribute('style'),
-							 '1.The popup Is Not visible')
-			except: 
-				raise (NoSuchAttributeException, '2. The element does not have a <Style> Attribute') 
+				self.assertIn('block', self.driver.find_element_by_name(elem_name).get_attribute('style'), '1.The popup Is Not visible')
+			except:
+				raise NoSuchAttributeException('6. The element does not have a Style Attribute')
 
 	def tearDown(self):
 		self.driver.quit()
