@@ -8,7 +8,7 @@ def test_suite_2(self):
 	test_suite_2.addTest(unittest.makeSuite(TestSuite1))
 	return test_suite_2
 
-def run(test_suite_2, report = "C:\Program Files (x86)\Jenkins\jobs\Results"):
+def run(test_suite_2, report = "C:/Program Files (x86)/Jenkins/jobs/Results/test_results.html"):
 	with open(report, "w") as f:
 		HTMLTestRunner.HTMLTestRunner(
 					stream = f,
