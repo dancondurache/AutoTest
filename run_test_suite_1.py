@@ -11,7 +11,7 @@ def test_suite_1(self):
 	test_suite_1.addTest(TestSuite1('test_05_website_footer_is_displayed'))
 	return test_suite_1
 
-def run(test_suite_1, report = "Results/test_results.html"):
+def run(test_suite_1, report = "C:/Program Files (x86)/Jenkins/jobs/Results/test_results.html"):
 	with open(report, "w") as f:
 		HTMLTestRunner.HTMLTestRunner(
 					stream = f,
