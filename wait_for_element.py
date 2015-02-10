@@ -15,7 +15,7 @@ def wait_for_element(self, elem_name = None, elem_id = None, elem_xpath = None):
             while contor < max_duration:
                 try: 
                     self.driver.find_element_by_id(elem_id)
-#                     print "The element with the Id '%s' has been found" % elem_id
+#                         print "The element with the Id '%s' has been found" % elem_id
                     return           
                 except: 
                     time.sleep(increment)
@@ -26,7 +26,7 @@ def wait_for_element(self, elem_name = None, elem_id = None, elem_xpath = None):
             while contor < max_duration:
                 try: 
                     self.driver.find_element_by_xpath(elem_xpath) 
-#                     print "The element with the XPath '%s' has been found" % elem_xpath
+#                         print "The element with the XPath '%s' has been found" % elem_xpath
                     return
                 except: 
                     time.sleep(increment)
@@ -37,7 +37,7 @@ def wait_for_element(self, elem_name = None, elem_id = None, elem_xpath = None):
             while contor < max_duration:
                 try: 
                     self.driver.find_element_by_name(elem_name)
-#                     print "The element with the Name '%s' has been found" % elem_name
+#                         print "The element with the Name '%s' has been found" % elem_name
                     return
                 except: 
                     time.sleep(increment)

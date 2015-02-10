@@ -1,0 +1,15 @@
+*.pyc
+ghostdriver.log
+open_test_website.py
+check_footer.py 
+wait_for_element.py
+custom_is_visible.py 
+suite_one_test.py 
+ 
+suite_one_test.py
+ghostdriver.log
+DemoTest.pyc
+BaseTest.pyc
+ghostdriver.log
+DemoTest.pyc
+BaseTest.pyc
